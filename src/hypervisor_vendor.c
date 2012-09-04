@@ -43,6 +43,7 @@
  */
 #define HYPERVISOR_INFO_LEAF   0x40000000
 
+#if 0
 static inline void
 cpuid(unsigned int op, unsigned int *eax, unsigned int *ebx,
 			 unsigned int *ecx, unsigned int *edx)
@@ -64,6 +65,7 @@ cpuid(unsigned int op, unsigned int *eax, unsigned int *ebx,
 		  "=d" (*edx)
 		: "1" (op), "c"(0));
 }
+#endif
 
 
 /* Use CPUID instruction to find hypervisor vendor.
@@ -72,6 +74,7 @@ cpuid(unsigned int op, unsigned int *eax, unsigned int *ebx,
  */
 static const char *get_hypervisor_cpuid(void)
 {
+#if 0
 	unsigned int eax = 0, ebx = 0, ecx = 0, edx = 0;
 	char hyper_vendor_id[13];
 
@@ -95,6 +98,7 @@ static const char *get_hypervisor_cpuid(void)
 	else if (!strncmp("VMwareVMware", hyper_vendor_id, 12))
 		return "VMware";
 	else
+#endif
 		return NULL;
 }
 
